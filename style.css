@@ -1,0 +1,247 @@
+@font-face {
+  font-family: "Work Sans";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap; /* Evita que el texto desaparezca mientras carga */
+  src:
+    local("Work Sans"),
+    url("assets/fonts/WorkSans-VariableFont_wght.ttf") format("truetype-variations"),
+    url("assets/fonts/WorkSans-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src:
+    local("Work Sans Italic"),
+    local("WorkSans-Italic"),
+    url("assets/fonts/WorkSans-Italic-VariableFont_wght.ttf") format("truetype-variations"),
+    url("assets/fonts/WorkSans-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto; /* Evita que las imágenes se distorsionen */
+
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+  interpolate-size: allow-keywords;
+
+  /* * 1. Primitivo (Puro, técnico y descriptivo del valor) */
+  --_ff-sans: "Work Sans", sans-serif;
+
+  --_fs-sm: 0.875rem; /*  (14px - textos secundarios) */
+  --_fs-base: 1rem; /*  (16px - texto del cuerpo) */
+  --_fs-lg: 1.125rem; /*  (18px) */
+  --_fs-xl: 1.25rem; /*  (20px - subtítulos) */
+  --_fs-2xl: 1.5rem; /*  (24px - títulos pequeños) */
+  --_fs-3xl: 1.875rem; /*  (30px) */
+  --_fs-4xl: 2.25rem; /*  (36px - títulos grandes) */
+  --_fs-5xl: 3rem; /* 48px - títulos hero / destacados */
+  --_fs-6xl: 3.5rem; /* 56px - título FAQs en desktop (o 3.75rem = 60px) */
+  --_fs-7xl: 4.5rem; /* 72px - display grande */
+
+  /* --_fw-light: 300; */
+  --_fw-regular: 400;
+  /* --_fw-medium: 500; */
+  --_fw-semibold: 600;
+  --_fw-bold: 700;
+
+  --_white: hsl(0, 0%, 100%);
+  --_purple-100: hsl(275, 100%, 97%);
+  --_purple-500: hsl(292, 16%, 49%);
+  --_purple-900: hsl(292, 42%, 14%);
+
+  /* * Espaciado y Dimensiones (Spacing & Sizing)
+  * Para los márgenes, paddings y huecos (gaps) */
+  --_space-1: 0.25rem; /*  (4px) */
+  --_space-2: 0.5rem; /*  (8px) */
+  --_space-3: 0.75rem; /*  (12px) */
+  --_space-4: 1rem; /*  (16px) — El tamaño base estándar */
+  --_space-5: 1.25rem; /*  (20px) */
+  --_space-6: 1.5rem; /*  (24px) */
+  --_space-8: 2rem; /*  (32px) */
+  --_space-10: 2.5rem; /* 40px */
+  --_space-12: 3rem; /* 48px */
+  --_space-16: 4rem; /* 64px */
+  --_space-20: 5rem; /* 80px */
+  --_space-24: 6rem; /* 96px */
+  --_space-32: 8rem; /* 128px */
+
+  /* * 2. Semántico (Define el propósito de uso en la app) */
+  --ff-body: var(--_ff-sans);
+  --fs-body: var(--_fs-base);
+  --fw-body: var(--_fw-regular);
+  --fc-body: var(--_purple-500);
+  --bg-body: var(--_purple-100);
+}
+
+body {
+  min-height: 100vh;
+  padding: 24px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 37.5rem);
+  place-content: center;
+
+  font-family: var(--ff-body);
+  font-weight: var(--fw-body);
+  font-size: var(--fs-body);
+  color: var(--fc-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Hace que las fuentes se vean más nítidas */
+
+  background-color: var(--bg-body);
+  background-image: url(assets/images/background-pattern-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+}
+
+.faq {
+  padding: clamp(var(--_space-6), 1.502vw + 1.148rem, var(--_space-10));
+
+  display: grid;
+  gap: clamp(0px, 3.005vw - 0.704rem, var(--_space-8));
+
+  background-color: var(--_white);
+  border-radius: 0.5rem;
+}
+
+.faq__title {
+  font-size: clamp(var(--_fs-4xl), 1.81rem + 1.878vw, var(--_fs-6xl));
+  font-weight: var(--_fw-bold);
+  color: var(--_purple-900);
+  line-height: 1.1;
+
+  display: flex;
+  align-items: center;
+  gap: var(--_space-4);
+}
+
+.faq__logo {
+  aspect-ratio: 1;
+  width: clamp(1.5rem, 7vw, 2.5rem);
+
+  flex-shrink: 0;
+}
+
+.faq__item {
+  --faq-item-padding-block: var(--_space-6);
+  --faq-transition-duration: 0.35s;
+
+  padding-block: var(--faq-item-padding-block);
+
+  border-bottom: 1px solid var(--_purple-100);
+}
+.faq__item:last-of-type {
+  padding-bottom: 0;
+
+  border-bottom: none;
+}
+.faq__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.35s ease,
+    content-visibility var(--faq-transition-duration) allow-discrete;
+}
+.faq__item[open]::details-content {
+  block-size: auto;
+}
+
+.faq__question {
+  --faq-question-color-active: var(--_purple-500);
+
+  font-size: clamp(var(--_fs-base), 0.956rem + 0.188vw, var(--_fs-lg));
+  font-weight: var(--_fw-bold);
+  color: var(--_purple-900);
+
+  cursor: pointer;
+  list-style: none; /* Refuerzo estándar */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--_space-6);
+}
+.faq__question::-webkit-details-marker {
+  display: none; /* Indispensable para evitar el triángulo en Safari */
+}
+.faq__question:where(:hover, :focus-visible) {
+  color: var(--faq-question-color-active);
+}
+.faq__question:focus-visible {
+  outline: 2px solid var(--faq-question-color-active);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
+.faq__toggle-icon {
+  aspect-ratio: 1;
+
+  display: flex;
+  flex-shrink: 0;
+
+  transition: transform var(--faq-transition-duration) ease;
+}
+.icon-minus {
+  display: none;
+}
+.faq__item[open] .faq__toggle-icon {
+  transform: rotate(180deg);
+}
+.faq__item[open] .icon-plus {
+  display: none;
+}
+.faq__item[open] .icon-minus {
+  display: block;
+}
+
+.faq__answer {
+  font-size: clamp(var(--_fs-sm), 0.5rem + 1vw, var(--_fs-base));
+  font-weight: var(--_fw-semibold);
+
+  padding-top: var(--faq-item-padding-block);
+}
+
+@media (min-width: 37.5em) {
+  body {
+    background-image: url("assets/images/background-pattern-desktop.svg");
+    background-size: max(100%, 90rem) auto;
+  }
+}
